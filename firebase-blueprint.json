@@ -1,0 +1,40 @@
+{
+  "entities": {
+    "Service": {
+      "title": "Service",
+      "description": "A scanning session for electronic ear tags",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The ID of the user who created this service"
+        },
+        "generalInfo": {
+          "type": "string",
+          "description": "General information or title for the scanning session"
+        },
+        "scannedCodes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The list of scanned electronic ear tags"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the service was created"
+        }
+      },
+      "required": ["userId", "generalInfo", "scannedCodes", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/services/{serviceId}": {
+      "schema": {
+        "$ref": "#/entities/Service"
+      },
+      "description": "Stores all scanning services"
+    }
+  }
+}
